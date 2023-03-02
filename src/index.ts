@@ -34,12 +34,22 @@ class SinglyLinkedList {
     return this;
   }
 
-  traverse() {
-    let current = this.head;
-    console.log(current);
-    while (current !== null) {
-      current = current.next;
+  pop() {
+    if (!this.head) return undefined;
+    let current: _Node | null = this.head;
+    let newTail: _Node | null = current;
+    while (current.next) {
+      newTail = current;
+      current = current?.next;
     }
+    this.tail = newTail;
+    this.tail.next = null;
+    this.length--;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+    return this;
   }
 }
 
@@ -47,6 +57,3 @@ const list = new SinglyLinkedList();
 list.push(1);
 list.push(2);
 list.push(3);
-// list.push(2);
-// list.push(3);
-list.traverse(); // prints 1 2 3
