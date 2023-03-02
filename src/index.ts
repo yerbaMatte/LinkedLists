@@ -27,7 +27,7 @@ class SinglyLinkedList {
       this.head = newNode;
       this.tail = newNode;
     } else if (this.tail) {
-      this.head.next = newNode;
+      this.tail.next = newNode;
       this.tail = newNode;
     }
     this.length++;
@@ -36,8 +36,8 @@ class SinglyLinkedList {
 
   traverse() {
     let current = this.head;
+    console.log(current);
     while (current !== null) {
-      console.log(current);
       current = current.next;
     }
   }
@@ -47,6 +47,6 @@ const list = new SinglyLinkedList();
 list.push(1);
 list.push(2);
 list.push(3);
-list.push(2);
-list.push(3);
+// list.push(2);
+// list.push(3);
 list.traverse(); // prints 1 2 3
