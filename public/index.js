@@ -7,3 +7,13 @@ class _Node {
         this.next = null;
     }
 }
+class SinglyLinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+}
+const list = new SinglyLinkedList();
+const first = new _Node('Hi');
+first.next = new _Node('Im next node!');
