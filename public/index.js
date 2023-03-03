@@ -65,20 +65,28 @@ class SinglyLinkedList {
         return this;
     }
     get(ind) {
-        if (ind < 0 || ind >= this.length || this.head === null)
+        if (ind < 0 || ind >= this.length)
             return null;
-        let currentNode = this.head;
-        for (let i = 0; i <= ind; i++) {
-            if (i === ind) {
-                return currentNode;
-            }
-            else {
-                if (currentNode === null)
-                    return null;
-                currentNode = currentNode.next;
-            }
+        let counter = 0;
+        let current = this.head;
+        while (counter !== ind && current !== null) {
+            current = current.next;
+            counter++;
         }
-        return currentNode;
+        return current;
+    }
+    set(ind, val) {
+        let foundNode;
+        if (this.get(ind)) {
+            foundNode = this.get(ind);
+            if (!foundNode)
+                return false;
+            foundNode.val = val;
+            return foundNode;
+        }
+        else {
+            return false;
+        }
     }
 }
 const list = new SinglyLinkedList();

@@ -73,17 +73,26 @@ class SinglyLinkedList {
   }
 
   get(ind: number): _Node | null {
-    if (ind < 0 || ind >= this.length || this.head === null) return null;
-    let currentNode: _Node | null = this.head;
-    for (let i = 0; i <= ind; i++) {
-      if (i === ind) {
-        return currentNode;
-      } else {
-        if (currentNode === null) return null;
-        currentNode = currentNode.next;
-      }
+    if (ind < 0 || ind >= this.length) return null;
+    let counter: number = 0;
+    let current = this.head;
+    while (counter !== ind && current !== null) {
+      current = current.next;
+      counter++;
     }
-    return currentNode;
+    return current;
+  }
+
+  set(ind: number, val: any) {
+    let foundNode: _Node | null;
+    if (this.get(ind)) {
+      foundNode = this.get(ind);
+      if (!foundNode) return false;
+      foundNode.val = val;
+      return foundNode;
+    } else {
+      return false;
+    }
   }
 }
 
