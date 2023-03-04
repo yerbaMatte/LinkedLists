@@ -93,6 +93,10 @@ class SinglyLinkedList {
     } else {
       return false;
     }
+  } //ind-4
+  // 0 1 2 [x]< -- length = 3
+  insert(ind: number, val: any) {
+    if (ind < -1 || ind >= this.length + 1) return null;
   }
 }
 
@@ -104,3 +108,5 @@ list.push(3);
 list.push('B');
 list.push(2);
 list.push('C');
+
+//
