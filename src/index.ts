@@ -96,7 +96,17 @@ class SinglyLinkedList {
   } //ind-4
   // 0 1 2 [x]< -- length = 3
   insert(ind: number, val: any) {
-    if (ind < -1 || ind >= this.length + 1) return null;
+    if (ind < 0 || ind > this.length) return false;
+    if (ind === this.length) return !!this.push(val);
+    if (ind === 0) return !!this.unshift(val);
+    let newNode = new _Node(val);
+    let prev = this.get(ind - 1);
+    if (prev === null) return false;
+    let temp = prev.next;
+    prev.next = newNode;
+    newNode.next = temp;
+    this.length++;
+    return true;
   }
 }
 
